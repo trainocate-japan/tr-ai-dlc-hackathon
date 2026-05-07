@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+
+# Build outputs
+dist/
+build/
+out/
+target/
+*.js.map
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test & coverage
+coverage/
+.nyc_output/
+htmlcov/
+
+# CDK
+cdk.out/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Temporary
+tmp/
+temp/
