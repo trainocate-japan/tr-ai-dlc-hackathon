@@ -131,3 +131,10 @@
 **Context**: INCEPTION - User Stories. ユーザーからの変更リクエスト。クイズ＆ポイント機能とBedrock連携が新規追加。
 
 ---
+## User Stories - Additional Change Request
+**Timestamp**: 2026-05-07T00:18:00Z
+**User Input**: "カードに表示するコースの概要もBedrockが生成します。連携するコースデータファイルにはコースの内容、目的など全文が含まれます。"
+**AI Response**: US-004とFR-1を更新。コース概要（カード表示用サマリー）もBedrockが全文データから自動生成する仕様に変更。US-017のクイズ生成と同様にバッチ処理で事前生成。
+**Context**: INCEPTION - User Stories. Bedrock活用範囲の拡大（クイズ生成 + コース概要生成）。
+
+---
