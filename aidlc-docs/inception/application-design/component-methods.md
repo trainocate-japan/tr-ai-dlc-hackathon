@@ -110,10 +110,11 @@
 ### GET /discovery/map
 | 項目 | 内容 |
 |------|------|
-| **目的** | 発見マップ（カテゴリ別閲覧統計）を取得 |
+| **目的** | 発見マップ（コースグラフ + 統計）を取得 |
 | **入力** | なし |
-| **出力** | `{ categories: { name: str, viewCount: int, likeCount: int }[] , totalViewed: int, totalCategories: int }` |
+| **出力** | `{ nodes: { courseCode: str, title: str, summary: str, category: str, liked: bool, viewed: bool }[], edges: { source: str, target: str, relation: str }[], stats: { totalViewed: int, totalLiked: int, totalCategories: int } }` |
 | **認証** | 必須 |
+| **備考** | ノード=閲覧/いいね済みコース。エッジ=同カテゴリ関係。liked=trueのノードは強調表示用。summaryはコースカードを思い出すための概要。 |
 
 ---
 

@@ -158,3 +158,10 @@
 **Context**: INCEPTION - Application Design. 全ステップ完了。
 
 ---
+## Application Design - Discovery Map Enhancement Request
+**Timestamp**: 2026-05-07T00:22:00Z
+**User Input**: "ちょっと戻るかもですが、発見マップ機能ですが、同じカテゴリのコース同士が線で繋がったり、いいねを押しているコースが強調されて見えたり、ユーザーが興味のありそうなコースがビジュアライズされていたり、そのコースカードを思い出すような仕組みがあるといいです"
+**AI Response**: 発見マップ機能を拡張。US-012とDiscovery Serviceを更新。グラフ型ビジュアライゼーション（ノード＋エッジ）に変更。
+**Context**: INCEPTION - Application Design. 発見マップのUI/UX要件が具体化。カテゴリ別統計チャートからインタラクティブなグラフビジュアライゼーションに進化。
+
+---

@@ -10,7 +10,7 @@
 | **Course Lambda** | DynamoDB (courses) |
 | **Collection Lambdas** | DynamoDB (collections) |
 | **Quiz Lambda** | DynamoDB (quizzes, users) |
-| **Discovery Lambda** | DynamoDB (view-history, collections) |
+| **Discovery Lambda** | DynamoDB (view-history, collections, course-summaries, courses) |
 | **Course Ingestion Lambda** | SQS (course-ingestion-queue), DynamoDB (courses) |
 | **Ranking Ingestion Lambda** | SQS (ranking-ingestion-queue), DynamoDB (courses) |
 | **Stream Handler Lambda** | DynamoDB Streams (courses), EventBridge |
