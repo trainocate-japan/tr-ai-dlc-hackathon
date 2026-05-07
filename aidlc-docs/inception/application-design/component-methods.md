@@ -90,9 +90,9 @@
 ### POST /quizzes/{quizId}/answer
 | 項目 | 内容 |
 |------|------|
-| **目的** | クイズに回答し、正解ならポイント加算 |
-| **入力** | `{ selectedOption: str }` |
-| **出力** | `{ correct: bool, correctAnswer: str, pointsEarned: int, totalPoints: int, level: int }` |
+| **目的** | ○×クイズに回答し、正解ならポイント加算 |
+| **入力** | `{ answer: bool }` (true=○, false=×) |
+| **出力** | `{ correct: bool, correctAnswer: bool, explanation: str, pointsEarned: int, totalPoints: int, level: int }` |
 | **認証** | 必須 |
 
 ### GET /users/me/points
@@ -159,10 +159,10 @@
 ### generate_quiz
 | 項目 | 内容 |
 |------|------|
-| **目的** | コース全文からクイズを生成 |
+| **目的** | コース全文から○×（マルバツ）クイズを生成 |
 | **入力** | SQSメッセージ（courseCode） |
 | **出力** | quizzesテーブルに保存 |
-| **ロジック** | Bedrock InvokeModel → コース全文をプロンプトに含め、4択クイズ（問題文+選択肢+正解+解説）を生成 |
+| **ロジック** | Bedrock InvokeModel → コース全文をプロンプトに含め、○×2択クイズ（問題文 + 正解(○or×) + 解説）を生成 |
 
 ---
 
@@ -174,4 +174,4 @@
 | **目的** | coursesテーブルの変更を検知し、EventBridgeにイベント発行 |
 | **入力** | DynamoDB Streamsイベント（INSERT/MODIFY） |
 | **出力** | EventBridgeにカスタムイベント発行 |
-| **ロジック** | 新規登録/更新されたコースのcourseCodeをイベントペイロードに含め、EventBridgeに送信。EventBridgeルールで2つのSQS（summary-generation-queue, quiz-generation-queue）にルーティング。 |
+| **ロジック** | 新規登録(INSERT)またはコース内容の更新(MODIFY)時のみEventBridgeにイベント発行。ランキング情報のみの更新（ranking属性のみ変更）の場合はイベントを発行しない。courseCodeをイベントペイロードに含め、EventBridgeルールで2つのSQS（summary-generation-queue, quiz-generation-queue）にルーティング。 |

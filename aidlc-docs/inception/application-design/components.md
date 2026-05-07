@@ -135,12 +135,13 @@
 ## 5. インフラ/ネットワーク
 
 ### 5.1 CloudFront
-- フロントエンド配信（S3オリジン）
+- フロントエンド配信（S3オリジン）のみ
 - HTTPSエンドポイント
 - セキュリティヘッダー付与
 
-### 5.2 API Gateway (REST API)
+### 5.2 API Gateway (REST API - Edge Optimized)
 - バックエンドAPIのエントリーポイント
+- エッジ最適化型（CloudFront不要、API GW自体がエッジロケーション活用）
 - Cognito Authorizer による認証
 - リクエストバリデーション
 - レート制限

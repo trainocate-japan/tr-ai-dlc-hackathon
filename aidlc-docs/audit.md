@@ -165,3 +165,10 @@
 **Context**: INCEPTION - Application Design. 発見マップのUI/UX要件が具体化。カテゴリ別統計チャートからインタラクティブなグラフビジュアライゼーションに進化。
 
 ---
+## Application Design - Multiple Change Requests
+**Timestamp**: 2026-05-07T00:23:00Z
+**User Input**: "Bedrockの非同期処理はToken Limited Exception回避目的でもある。---DynamoDB Streams Handlerは、ランキング情報のときはPutEventしないでください---クイズは2択のox(マルバツ)クイズで。---ロギングはLambdaレイヤーのADOTを使ってX-Rayトレースもお願いします。---API GWの前にCloudFrontは置きません。API GWをエッジ型で作成すればいい。---"
+**AI Response**: 5つの変更を反映。(1)Bedrock非同期理由にToken制限回避追加、(2)Streams HandlerでランキングUpdate時はイベント発行しない条件追加、(3)クイズを○×2択に変更、(4)ロギングをADOT Lambda Layer + X-Rayに変更、(5)API GWをエッジ最適化型に変更しCloudFrontを前段から除去。
+**Context**: INCEPTION - Application Design. アーキテクチャの詳細調整。
+
+---

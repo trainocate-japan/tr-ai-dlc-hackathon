@@ -76,7 +76,9 @@ DynamoDB Streams (courses テーブル変更)
 | **責務** | コースデータ変更をトリガーに、Bedrockで概要サマリーとクイズを自動生成 |
 | **パターン** | イベント駆動、ファンアウト（1イベント → 2つの処理パス） |
 | **再帰防止** | 生成結果は別テーブル（course-summaries, quizzes）に書き込み、coursesテーブルのStreamsは再トリガーされない |
+| **非同期理由** | Bedrock Token Limit Exception回避（大量コース一括処理時のスロットリング対策）+ タイムアウト回避 |
 | **エラーハンドリング** | DLQでBedrock呼び出し失敗を退避、リトライ可能 |
+| **条件** | DynamoDB Streams Handlerはコースデータの新規登録(INSERT)または内容更新(MODIFY)時のみEventBridgeにイベント発行。ランキング情報のみの更新時はイベント発行しない。 |
 
 ---
 
@@ -100,7 +102,9 @@ DynamoDB Streams (courses テーブル変更)
 - API: 統一エラーレスポンス形式（statusCode, errorCode, message）
 - バッチ: DLQによるエラー退避、CloudWatch Alarmsで通知
 
-### 4.3 ロギング
+### 4.3 ロギング・トレーシング
+- AWS Distro for OpenTelemetry (ADOT) Lambda Layer を全Lambda関数に適用
+- AWS X-Ray によるトレーシング（リクエスト全体の可視化）
 - 構造化ログ（JSON形式）
 - リクエストID/相関IDの伝播
 - CloudWatch Logsに集約
