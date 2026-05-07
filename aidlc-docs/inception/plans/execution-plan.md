@@ -26,7 +26,7 @@ flowchart TD
     subgraph INCEPTION["🔵 INCEPTION PHASE"]
         WD["Workspace Detection<br/><b>COMPLETED</b>"]
         RA["Requirements Analysis<br/><b>COMPLETED</b>"]
-        US["User Stories<br/><b>SKIP</b>"]
+        US["User Stories<br/><b>EXECUTE</b>"]
         WP["Workflow Planning<br/><b>IN PROGRESS</b>"]
         AD["Application Design<br/><b>EXECUTE</b>"]
         UG["Units Generation<br/><b>EXECUTE</b>"]
@@ -43,7 +43,8 @@ flowchart TD
     
     Start --> WD
     WD --> RA
-    RA --> WP
+    RA --> US
+    US --> WP
     WP --> AD
     AD --> UG
     UG --> FD
@@ -59,7 +60,7 @@ flowchart TD
     style WP fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
     style AD fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
     style UG fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
-    style US fill:#BDBDBD,stroke:#424242,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+    style US fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
     style FD fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
     style NFRA fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
     style NFRD fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
@@ -79,7 +80,7 @@ flowchart TD
 Phase 1: INCEPTION
   - Workspace Detection (COMPLETED)
   - Requirements Analysis (COMPLETED)
-  - User Stories (SKIP)
+  - User Stories (EXECUTE)
   - Workflow Planning (IN PROGRESS)
   - Application Design (EXECUTE)
   - Units Generation (EXECUTE)
@@ -100,8 +101,8 @@ Phase 2: CONSTRUCTION (per-unit)
 ### 🔵 INCEPTION PHASE
 - [x] Workspace Detection (COMPLETED)
 - [x] Requirements Analysis (COMPLETED)
-- [ ] User Stories - **SKIP**
-  - **理由**: MVPスコープが小規模で明確。単一ペルソナ（社会人全般）。ユーザーストーリーなしでも要件が十分に定義されている。
+- [ ] User Stories - EXECUTE
+  - **理由**: ユーザーの要望により実行。ユーザー体験の詳細化とアクセプタンス基準の明確化に活用。
 - [x] Workflow Planning (IN PROGRESS)
 - [ ] Application Design - **EXECUTE**
   - **理由**: 新規コンポーネント（フロントエンド、API、データストア）の設計が必要。コンポーネント間の依存関係を明確化する必要あり。
@@ -125,8 +126,8 @@ Phase 2: CONSTRUCTION (per-unit)
 ---
 
 ## 見積もりタイムライン
-- **合計ステージ数**: 10（完了2 + 実行8）
-- **スキップ**: 1（User Stories）
+- **合計ステージ数**: 11（完了2 + 実行9）
+- **スキップ**: 0
 - **見積もり期間**: 1〜2週間（MVP開発）
 
 ## 成功基準
