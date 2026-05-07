@@ -3,7 +3,7 @@
 ## Project Information
 - **Project Type**: Greenfield
 - **Start Date**: 2026-05-07T00:00:00Z
-- **Current Stage**: INCEPTION - Workspace Detection
+- **Current Stage**: INCEPTION - Requirements Analysis (Complete)
 
 ## Workspace State
 - **Existing Code**: No
@@ -15,13 +15,22 @@
 - **Documentation**: aidlc-docs/ only
 - **Structure patterns**: See code-generation.md Critical Rules
 
+## Extension Configuration
+| Extension | Enabled | Decided At |
+|---|---|---|
+| Security Baseline | Yes | Requirements Analysis |
+| Property-Based Testing | Yes | Requirements Analysis |
+
 ## Stage Progress
+### 🔵 INCEPTION PHASE
 - [x] Workspace Detection (Greenfield detected)
-- [ ] Requirements Analysis
+- [x] Requirements Analysis
 - [ ] User Stories
 - [ ] Workflow Planning
 - [ ] Application Design
 - [ ] Units Generation
+
+### 🟢 CONSTRUCTION PHASE
 - [ ] Functional Design
 - [ ] NFR Requirements
 - [ ] NFR Design
