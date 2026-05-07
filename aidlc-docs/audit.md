@@ -192,3 +192,24 @@
 **Context**: INCEPTION - Units Generation Part 2. 全ステップ完了。
 
 ---
+## Units Generation - User Question (Neptune)
+**Timestamp**: 2026-05-07T00:27:00Z
+**User Input**: "[質問]: view-history + collections + course-summariesテーブルから非同期でNeptuneにグラフデータを作るのはコストなどメリットデメリットはどれぐらいありますか？"
+**AI Response**: Neptune vs DynamoDBでのグラフデータ構築のメリット・デメリット・コスト比較を提示。
+**Context**: INCEPTION - Units Generation. ユーザーが発見マップのデータストアとしてNeptune導入を検討中。
+
+---
+## Units Generation - User Question (CloudFront in API flow)
+**Timestamp**: 2026-05-07T00:28:00Z
+**User Input**: "component-dependency.mdデータフロー図ユーザー向けAPI フローのCloudFrontは何でしょうか？"
+**AI Response**: 指摘の通り、API GWはEdge Optimized型なのでAPI前段のCloudFrontは不要。データフロー図を修正。CloudFrontはフロントエンド配信のみ。
+**Context**: INCEPTION - Units Generation. 先の変更（API GW Edge Optimized、CloudFrontはフロントエンドのみ）がデータフロー図に反映漏れ。
+
+---
+## Units Generation - Neptune Decision Recorded
+**Timestamp**: 2026-05-07T00:29:00Z
+**User Input**: "Neptuneは選択しなくて良いです。ただし、Neptuneを選択しなかった理由をどこかに残しておいてください。"
+**AI Response**: ADR-001としてapplication-design.mdに「Neptuneを採用しない理由」を記録。コスト差（10〜20倍）、MVP規模での不要性、将来の再検討条件を明記。
+**Context**: INCEPTION - Units Generation. 設計判断記録（ADR）として残す。
+
+---

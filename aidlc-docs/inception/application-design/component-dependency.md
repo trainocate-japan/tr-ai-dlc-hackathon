@@ -4,7 +4,7 @@
 
 | コンポーネント | 依存先 |
 |---------------|--------|
-| **Frontend (Next.js)** | API Gateway, Cognito, CloudFront |
+| **Frontend (Next.js)** | API Gateway (Edge Optimized), Cognito, CloudFront (配信のみ) |
 | **API Gateway** | Lambda (各API), Cognito (Authorizer) |
 | **Feed Lambda** | DynamoDB (courses, course-summaries, quizzes, view-history) |
 | **Course Lambda** | DynamoDB (courses) |
@@ -23,16 +23,17 @@
 
 ### ユーザー向けAPI フロー
 ```
-+----------+     +------------+     +---------+     +----------+
-| Frontend | --> | CloudFront | --> | API GW  | --> | Lambda   |
-| (Next.js)|     | (CDN)      |     | +Cognito|     | (各API)  |
-+----------+     +------------+     +---------+     +----------+
-                                                         |
-                                                         v
-                                                    +----------+
-                                                    | DynamoDB  |
-                                                    | (各Table) |
-                                                    +----------+
++----------+     +---------+     +----------+
+| Frontend | --> | API GW  | --> | Lambda   |
+| (Next.js)|     | (Edge   |     | (各API)  |
+|          |     | Optimized)    |          |
++----------+     | +Cognito|     +----------+
+                 +---------+          |
+                                      v
+                                 +----------+
+                                 | DynamoDB  |
+                                 | (各Table) |
+                                 +----------+
 ```
 
 ### バッチ処理（データ取り込み）フロー
