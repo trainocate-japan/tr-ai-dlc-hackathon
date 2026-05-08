@@ -220,3 +220,10 @@
 **Context**: INCEPTION - Units Generation. requirements.mdの複数箇所を更新。
 
 ---
+## Units Generation - README Hackathon Info
+**Timestamp**: 2026-05-07T00:31:00Z
+**User Input**: "このプロジェクト自体は、AWSのAI-DLCハッカソンに提出するプログラムやKiro開発環境です。それもREADME.mdに加えてもらえますか？https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Summit-Japan-2026-Hackathon_%E8%AA%AC%E6%98%8E%E4%BC%9A_%E9%85%8D%E5%B8%83%E7%94%A8.pdf"
+**AI Response**: README.mdにハッカソン情報セクションを追加。AWS Summit Japan 2026ハッカソン、AI-DLCテーマ、Kiro開発環境の情報を記載。
+**Context**: INCEPTION - Units Generation. プロジェクトのコンテキスト情報追加。
+
+---
