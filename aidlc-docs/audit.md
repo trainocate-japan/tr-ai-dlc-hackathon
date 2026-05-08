@@ -213,3 +213,10 @@
 **Context**: INCEPTION - Units Generation. 設計判断記録（ADR）として残す。
 
 ---
+## Units Generation - Requirements Update Request
+**Timestamp**: 2026-05-07T00:30:00Z
+**User Input**: "requiements.mdについてBedrockによるコース概要のコンテンツ生成はHTML形式で例に習って作成し、DynamoDBに保存しておく。IaCはCDKになりました「社内ツール / コミュニティ貢献目的」ではなく、自社サービスサイトへの流入目的ですAI レコメンデーション（パーソナライズ）は拡張でも要らないトレノケートのコース情報の取得方法は要確認（公開API有無、スクレイピング可否、手動登録）は、取得方法は確定しています。社内システム連携確定としてください。「MVP段階ではコースデータは手動またはバッチで投入する想定」はS3からの連携です「著作権・利用規約の確認が必要（コース情報の二次利用可否）」は可能です"
+**AI Response**: requirements.mdを6箇所更新。(1)概要生成をHTML形式に、(2)IaCをCDKに確定、(3)収益モデルを自社サービスサイト流入目的に、(4)AIレコメンドを将来拡張から削除、(5)コースデータ取得方法を社内システム連携確定に、(6)制約事項を更新。
+**Context**: INCEPTION - Units Generation. requirements.mdの複数箇所を更新。
+
+---
