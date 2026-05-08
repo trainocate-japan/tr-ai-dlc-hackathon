@@ -93,16 +93,16 @@
 ### 3.3 Summary Generation (Bedrock)
 | 項目 | 内容 |
 |------|------|
-| **技術** | Python, Lambda, Amazon Bedrock |
+| **技術** | Python, Lambda, Amazon Bedrock (Amazon Nova 2 Lite) |
 | **トリガー** | DynamoDB Streams (courses) → Lambda → EventBridge → SQS → Lambda |
-| **責務** | コース全文からカード表示用概要サマリーを生成、概要サマリーテーブルに保存 |
+| **責務** | コース全文からカード表示用概要サマリーをHTML形式で生成、course-summariesテーブルに保存 |
 
 ### 3.4 Quiz Generation (Bedrock)
 | 項目 | 内容 |
 |------|------|
-| **技術** | Python, Lambda, Amazon Bedrock |
+| **技術** | Python, Lambda, Amazon Bedrock (Amazon Nova 2 Lite) |
 | **トリガー** | DynamoDB Streams (courses) → Lambda → EventBridge → SQS → Lambda |
-| **責務** | コース全文からクイズ（問題文+選択肢+正解）を生成、クイズテーブルに保存 |
+| **責務** | コース全文から○×2択クイズ（問題文+正解+解説）を生成、quizzesテーブルに保存 |
 
 ---
 

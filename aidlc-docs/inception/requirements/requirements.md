@@ -80,7 +80,7 @@
 - クイズはAmazon Bedrock（生成AIモデル）がコース情報を元に○×（マルバツ）2択形式で自動作成
 - ユーザーはクイズに回答でき、正解するとポイントが加算される
 - 累計ポイントに応じてユーザーレベルが上がる
-- クイズ生成はバッチ処理で事前に実行（非同期、Token Limit Exception回避）
+- クイズ生成はイベント駆動で実行（コースデータ登録/更新時にDynamoDB Streams経由で自動トリガー、Token Limit Exception回避のため非同期）
 
 ### FR-6: Bedrockによるコンテンツ生成
 - コースデータファイルにはコースの内容・目的など全文が含まれる
@@ -88,7 +88,7 @@
 - 生成されたHTMLは例（テンプレート）に習った形式で作成される
 - 生成結果はDynamoDBのcourse-summariesテーブルにHTML形式で保存
 - クイズ（問題文 + 正解○or× + 解説）をBedrockがコース全文から自動生成
-- いずれもバッチ処理で事前に生成し、DynamoDBに保存
+- いずれもイベント駆動で実行（コースデータ登録/更新時にDynamoDB Streams → EventBridge → SQS → Lambda + Bedrockで非同期生成）
 
 ---
 
@@ -101,6 +101,9 @@
 
 ### NFR-2: セキュリティ
 - Cognito による認証・認可
+  - パスワードポリシー: 16桁以上、大文字・小文字・数字必須
+  - MFA: 任意（ユーザー選択）
+  - その他詳細はConstruction Phaseで定義予定
 - HTTPS通信必須
 - API Gateway でのリクエスト認証
 - DynamoDB のデータアクセス制御
@@ -131,7 +134,7 @@
 | **API** | API Gateway + Lambda (Python) |
 | **認証** | Amazon Cognito |
 | **データベース** | DynamoDB |
-| **AI/クイズ生成** | Amazon Bedrock |
+| **AI/コンテンツ生成** | Amazon Bedrock (Amazon Nova 2 Lite) |
 | **IaC** | AWS CDK (TypeScript) |
 
 ---

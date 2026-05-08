@@ -1,5 +1,29 @@
 # コンポーネントメソッド定義
 
+## エンドポイント → Lambda関数 マッピング表
+
+| APIエンドポイント | サービス | Lambdaハンドラー (Python) | ユニット |
+|------------------|---------|--------------------------|---------|
+| `GET /feed` | Feed Service | `backend/src/feed/get_feed.py` | Backend API |
+| `POST /feed/view` | Feed Service | `backend/src/feed/post_view.py` | Backend API |
+| `GET /courses/{courseCode}` | Course Service | `backend/src/courses/get_course.py` | Backend API |
+| `POST /collections/likes` | Collection Service | `backend/src/collections/post_like.py` | Backend API |
+| `DELETE /collections/likes/{courseCode}` | Collection Service | `backend/src/collections/delete_like.py` | Backend API |
+| `POST /collections/watchlater` | Collection Service | `backend/src/collections/post_watchlater.py` | Backend API |
+| `DELETE /collections/watchlater/{courseCode}` | Collection Service | `backend/src/collections/delete_watchlater.py` | Backend API |
+| `GET /collections/likes` | Collection Service | `backend/src/collections/get_likes.py` | Backend API |
+| `GET /collections/watchlater` | Collection Service | `backend/src/collections/get_watchlater.py` | Backend API |
+| `POST /quizzes/{quizId}/answer` | Quiz Service | `backend/src/quizzes/post_answer.py` | Backend API |
+| `GET /users/me/points` | Quiz Service | `backend/src/quizzes/get_points.py` | Backend API |
+| `GET /discovery/map` | Discovery Service | `backend/src/discovery/get_map.py` | Backend API |
+| (S3 → SQS trigger) | Course Ingestion | `batch/src/ingestion/process_course_file.py` | Batch |
+| (S3 → SQS trigger) | Ranking Ingestion | `batch/src/ingestion/process_ranking_file.py` | Batch |
+| (DynamoDB Streams) | Stream Handler | `batch/src/streams/stream_handler.py` | Batch |
+| (SQS trigger) | Summary Generation | `batch/src/generation/generate_summary.py` | Batch |
+| (SQS trigger) | Quiz Generation | `batch/src/generation/generate_quiz.py` | Batch |
+
+---
+
 ## 1. Feed Service
 
 ### GET /feed
@@ -147,10 +171,10 @@
 ### generate_summary
 | 項目 | 内容 |
 |------|------|
-| **目的** | コース全文からカード表示用概要サマリーを生成 |
+| **目的** | コース全文からカード表示用概要サマリーをHTML形式で生成 |
 | **入力** | SQSメッセージ（courseCode） |
-| **出力** | course-summariesテーブルに保存 |
-| **ロジック** | Bedrock InvokeModel → コース全文をプロンプトに含め、キャッチーな概要サマリーを生成 |
+| **出力** | course-summariesテーブルにHTML形式で保存 |
+| **ロジック** | Bedrock InvokeModel (Amazon Nova 2 Lite) → コース全文をプロンプトに含め、テンプレートに準拠したHTML形式のキャッチーな概要サマリーを生成 |
 
 ---
 
@@ -159,10 +183,10 @@
 ### generate_quiz
 | 項目 | 内容 |
 |------|------|
-| **目的** | コース全文から○×（マルバツ）クイズを生成 |
+| **目的** | コース全文から○×（マルバツ）2択クイズを生成 |
 | **入力** | SQSメッセージ（courseCode） |
 | **出力** | quizzesテーブルに保存 |
-| **ロジック** | Bedrock InvokeModel → コース全文をプロンプトに含め、○×2択クイズ（問題文 + 正解(○or×) + 解説）を生成 |
+| **ロジック** | Bedrock InvokeModel (Amazon Nova 2 Lite) → コース全文をプロンプトに含め、○×2択クイズ（問題文 + 正解(○or×) + 解説）を生成 |
 
 ---
 
@@ -174,4 +198,4 @@
 | **目的** | coursesテーブルの変更を検知し、EventBridgeにイベント発行 |
 | **入力** | DynamoDB Streamsイベント（INSERT/MODIFY） |
 | **出力** | EventBridgeにカスタムイベント発行 |
-| **ロジック** | 新規登録(INSERT)またはコース内容の更新(MODIFY)時のみEventBridgeにイベント発行。ランキング情報のみの更新（ranking属性のみ変更）の場合はイベントを発行しない。courseCodeをイベントペイロードに含め、EventBridgeルールで2つのSQS（summary-generation-queue, quiz-generation-queue）にルーティング。 |
+| **ロジック** | 新規登録(INSERT)時は常にEventBridgeにイベント発行。更新(MODIFY)時はNewImageとOldImageの更新属性を比較し、ranking属性のみの変更であればイベントを発行しない（コース内容属性が変更された場合のみ発行）。courseCodeをイベントペイロードに含め、EventBridgeルールで2つのSQS（summary-generation-queue, quiz-generation-queue）にルーティング。 |

@@ -57,7 +57,7 @@ v                           v                  v
 | Infrastructure + Backend API | ❌ | InfraがBackendの前提 |
 | Infrastructure + Batch | ❌ | InfraがBatchの前提 |
 | Infrastructure + Frontend | ❌ | InfraがFrontendの前提 |
-| Backend API + Batch Processing | ✅ | 互いに独立、DynamoDBテーブル共有だが競合なし |
+| Backend API + Batch Processing | ✅ | 互いに独立、DynamoDBテーブル共有だが競合なし。ただしBatchが生成するcourse-summaries/quizzesをBackend APIが参照するため、テーブルスキーマの合意が必要 |
 | Backend API + Frontend | ⚠️ | モックAPI使えば部分的に並行可能 |
 | Batch Processing + Frontend | ✅ | 直接の依存なし |
 

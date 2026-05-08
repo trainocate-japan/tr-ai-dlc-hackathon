@@ -234,3 +234,17 @@
 **Context**: INCEPTION - Units Generation. コスト見積もり追加。
 
 ---
+## Units Generation - Dependency Note
+**Timestamp**: 2026-05-07T00:33:00Z
+**User Input**: "uniti-of-work-dependency.md「互いに独立、DynamoDBテーブル共有だが競合なし」参照関係はあるので要注意"
+**AI Response**: Backend API → Batch Processingの参照関係（course-summaries/quizzesテーブル）を注記として追加。
+**Context**: INCEPTION - Units Generation. Backend APIがBatch生成データを参照する依存関係を明記。
+
+---
+## Units Generation - Consistency Fix
+**Timestamp**: 2026-05-07T00:34:00Z
+**User Input**: "1. イベントトリガーでの処理に統一 2. 2択に統一 3. HTML形式に統一 4. Amazon Nova2 Lite 5. 更新してください 6. Construction Phaseで定義予定 7. Construction Phaseで詳細化予定 8. 更新属性により判定 9. パスワードポリシー 16桁以上大文字小文字数字、MFA任意、ほかはConstruction Phaseで定義予定 10. マッピング表を追加 11. このままでOK 12. Construction Phaseで定義予定"
+**AI Response**: 整合性問題10件を修正。requirements.md, component-methods.md, application-design.md, components.md, execution-plan.mdを更新。
+**Context**: INCEPTION - Units Generation. 整合性チェック結果に基づく一括修正。
+
+---

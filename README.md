@@ -63,7 +63,7 @@ AI:    DynamoDB Streams → Lambda → EventBridge → SQS → Lambda + Bedrock
 | API | API Gateway (Edge Optimized) + Lambda (Python) |
 | 認証 | Amazon Cognito |
 | データベース | DynamoDB |
-| AI/コンテンツ生成 | Amazon Bedrock |
+| AI/コンテンツ生成 | Amazon Bedrock (Amazon Nova 2 Lite) |
 | IaC | AWS CDK (TypeScript) |
 | 監視 | ADOT Lambda Layer + X-Ray |
 

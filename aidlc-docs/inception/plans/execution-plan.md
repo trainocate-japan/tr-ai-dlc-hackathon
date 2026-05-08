@@ -26,10 +26,10 @@ flowchart TD
     subgraph INCEPTION["🔵 INCEPTION PHASE"]
         WD["Workspace Detection<br/><b>COMPLETED</b>"]
         RA["Requirements Analysis<br/><b>COMPLETED</b>"]
-        US["User Stories<br/><b>EXECUTE</b>"]
-        WP["Workflow Planning<br/><b>IN PROGRESS</b>"]
-        AD["Application Design<br/><b>EXECUTE</b>"]
-        UG["Units Generation<br/><b>EXECUTE</b>"]
+        US["User Stories<br/><b>COMPLETED</b>"]
+        WP["Workflow Planning<br/><b>COMPLETED</b>"]
+        AD["Application Design<br/><b>COMPLETED</b>"]
+        UG["Units Generation<br/><b>COMPLETED</b>"]
     end
     
     subgraph CONSTRUCTION["🟢 CONSTRUCTION PHASE"]
@@ -80,10 +80,10 @@ flowchart TD
 Phase 1: INCEPTION
   - Workspace Detection (COMPLETED)
   - Requirements Analysis (COMPLETED)
-  - User Stories (EXECUTE)
-  - Workflow Planning (IN PROGRESS)
-  - Application Design (EXECUTE)
-  - Units Generation (EXECUTE)
+  - User Stories (COMPLETED)
+  - Workflow Planning (COMPLETED)
+  - Application Design (COMPLETED)
+  - Units Generation (COMPLETED)
 
 Phase 2: CONSTRUCTION (per-unit)
   - Functional Design (EXECUTE)
@@ -101,13 +101,13 @@ Phase 2: CONSTRUCTION (per-unit)
 ### 🔵 INCEPTION PHASE
 - [x] Workspace Detection (COMPLETED)
 - [x] Requirements Analysis (COMPLETED)
-- [ ] User Stories - EXECUTE
+- [x] User Stories (COMPLETED)
   - **理由**: ユーザーの要望により実行。ユーザー体験の詳細化とアクセプタンス基準の明確化に活用。
-- [x] Workflow Planning (IN PROGRESS)
-- [ ] Application Design - **EXECUTE**
+- [x] Workflow Planning (COMPLETED)
+- [x] Application Design (COMPLETED)
   - **理由**: 新規コンポーネント（フロントエンド、API、データストア）の設計が必要。コンポーネント間の依存関係を明確化する必要あり。
-- [ ] Units Generation - **EXECUTE**
-  - **理由**: フロントエンド/バックエンド/インフラの3つのユニットに分解が必要。並行開発の計画に有用。
+- [x] Units Generation (COMPLETED)
+  - **理由**: フロントエンド/バックエンド/バッチ/インフラの4つのユニットに分解。並行開発の計画に有用。
 
 ### 🟢 CONSTRUCTION PHASE (per-unit)
 - [ ] Functional Design - **EXECUTE**
@@ -126,7 +126,7 @@ Phase 2: CONSTRUCTION (per-unit)
 ---
 
 ## 見積もりタイムライン
-- **合計ステージ数**: 11（完了2 + 実行9）
+- **合計ステージ数**: 11（完了5 + 実行6）
 - **スキップ**: 0
 - **見積もり期間**: 1〜2週間（MVP開発）
 
