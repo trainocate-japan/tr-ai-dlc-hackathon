@@ -227,3 +227,10 @@
 **Context**: INCEPTION - Units Generation. プロジェクトのコンテキスト情報追加。
 
 ---
+## Units Generation - Cost Estimate Request
+**Timestamp**: 2026-05-07T00:32:00Z
+**User Input**: "おおよその月額見積もり(100ユーザーでKPIを満たした場合)の概算をapplication-design.mdに追加してください"
+**AI Response**: 100ユーザー×KPI達成時の月額コスト概算をapplication-design.mdに追加。
+**Context**: INCEPTION - Units Generation. コスト見積もり追加。
+
+---
